@@ -27,7 +27,7 @@ const Menu = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(nameRef.current.value);
-    fetch('https://matma-backend.herokuapp.com/users/', {
+    fetch('https://matma-backend.herokuapp.com/users/create/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "name": nameRef.current.value })})
