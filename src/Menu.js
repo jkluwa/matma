@@ -28,8 +28,8 @@ const Menu = () => {
     event.preventDefault();
     console.log(nameRef.current.value);
     fetch('https://matma-backend.herokuapp.com/users/create/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ "name": nameRef.current.value })})
   }
   if(isGameAvaible) {
