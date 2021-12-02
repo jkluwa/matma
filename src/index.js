@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const PORT = process.env.PORT || 5000
+
 ReactDOM.render(
   <React.StrictMode>
     <style>{`
