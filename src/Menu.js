@@ -35,20 +35,13 @@ const Menu = () => {
     fetch('https://matma-backend.herokuapp.com/users/create/', {
       method: 'post',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "name": nameRef.current.value })})
+      body: JSON.stringify({ "name": nameRef.current.value })}).then((res) => {
+        console.log(res);
+      })
   }
 
   const startAdminHandler = (event) => {
     event.preventDefault()
-  }
-
-  const adminHandler = () => {
-    form = <Form>
-    <h1>Wpisz hasło</h1>
-    <input type="password" ref={passwordRef}/>
-    <Button onClick={startAdminHandler}>Start</Button>
-    <Button onClick={() => {setIsGameAvaible(true)}}>Jestem użytkownikiem</Button>
-  </Form>
   }
 
   if(isGameAvaible) {
@@ -63,6 +56,18 @@ const Menu = () => {
               <h1>Gra nie jest dostępna</h1>
             </Form>
   }
+
+  const adminHandler = (event) => {
+    event.preventDefault()
+    form = <Form>
+    <h1>Wpisz hasło</h1>
+    <input type="password" ref={passwordRef}/>
+    <Button onClick={startAdminHandler}>Start</Button>
+    <Button onClick={() => {setIsGameAvaible(true)}}>Jestem użytkownikiem</Button>
+  </Form>
+  }
+
+  
     return <div>{form}</div>
 }
 
