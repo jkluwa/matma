@@ -44,6 +44,16 @@ const Menu = () => {
     event.preventDefault()
   }
 
+  
+  const adminHandler = (event) => {
+    event.preventDefault()
+    form = <Form>
+    <h1>Wpisz hasło</h1>
+    <input type="password" ref={passwordRef}/>
+    <Button onClick={startAdminHandler}>Start</Button>
+    <Button onClick={() => {setIsGameAvaible(true)}}>Jestem użytkownikiem</Button>
+  </Form>
+  }
   if(isGameAvaible) {
     form = <Form>
     <h1>Wpisz swoją nazwę</h1>
@@ -55,16 +65,6 @@ const Menu = () => {
     form =  <Form>
               <h1>Gra nie jest dostępna</h1>
             </Form>
-  }
-
-  const adminHandler = (event) => {
-    event.preventDefault()
-    form = <Form>
-    <h1>Wpisz hasło</h1>
-    <input type="password" ref={passwordRef}/>
-    <Button onClick={startAdminHandler}>Start</Button>
-    <Button onClick={() => {setIsGameAvaible(true)}}>Jestem użytkownikiem</Button>
-  </Form>
   }
 
   
