@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import User from 'User'
-import Admin from 'Admin'
+import User from './User'
+import Admin from './Admin'
 
 
 
@@ -22,6 +22,7 @@ const Menu = () => {
 
   const changeUser = () => {
     setIsUser((user) => {
+      console.log(!user)
       return !user
     }
     )
@@ -29,8 +30,8 @@ const Menu = () => {
   
   
     return <Form>
-      {isUser && <User props={changeUser}/>}
-      {!isUser && <Admin props={changeUser} />}
+      {isUser && <User changeUser={changeUser}/>}
+      {!isUser && <Admin changeUser={changeUser} />}
     </Form>
 }
 
