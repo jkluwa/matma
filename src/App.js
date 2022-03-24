@@ -10,14 +10,15 @@ const Container = styled.div`
   align-items: center;
   margin: 0;
   height: 100vh;
+  background-color: blanchedalmond;
 `
 
 const App = () => {
   const [isGameOn, setIsGameOn] = useState(false)
-  
   return (
+    
     <Container>
-      {!isGameOn && <Menu />}
+      {!isGameOn && <Menu startGame={()=>{setIsGameOn(true)}}/>}
       {isGameOn && <Game />}
     </Container>
   )

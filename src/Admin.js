@@ -1,29 +1,35 @@
-import React, { useRef } from "react"
-import Button from "./Button"
+import React, { useState, useMemo } from "react"
+import AdminStart from "./AdminStart"
+import AdminPage from "./AdminPage"
 
 
-const Admin = (props) => {
+const Admin = () => {
+    const [isGameOn, setIsGameOn] = useState(false)
+    const [compInfo, setCompInfo] = useState()
+    const [users, setUsers] = useState([])
+    const ws = useMemo(() => {return new WebSocket("ws://localhost:8000/ws/admin")}, ["ws://localhost:8000/ws/admin"])
 
-    const passwordRef = useRef('')
-
-    const startAdminHandler = () => {
-        fetch('https://matma-backend.herokuapp.com/admin/', {
-            method: 'post',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "password": passwordRef.current.value })}).then((res) => {
-                console.log(res);
+    ws.onopen = ()=>{ws.send("adminStarted")}
+    ws.onmessage = (event) => {
+        if (event.data == 'isAdminActive') {
+            ws.send('adminStarted')
+        } else if(Array.isArray(event.data)) {
+            console.log("HM")
+            setCompInfo(JSON.parse(event.data))
+        } else {
+            console.log("AHA")
+            setUsers((users_) => {
+                return [...users_, event.data]
             })
+        }
     }
-    const changeUser = (event) => {
-        event.preventDefault()
-        props.changeUser()
-    }
+
+
     return (
-    <div>
-        <h1>Wpisz hasło</h1>
-        <input type="password" ref={passwordRef}/>
-        <Button action={startAdminHandler}>START</Button>
-        <Button action={props.changeUser}>użytkownik</Button>
-    </div>)
+        <div>
+            {!isGameOn && <AdminStart ws={ws} users={users} startGame={() => setIsGameOn(true)} />}
+            {isGameOn && <AdminPage compInfo={compInfo} ws={ws}/>}
+        </div>
+    )
 }
-  export default Admin
+export default Admin

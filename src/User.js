@@ -1,28 +1,36 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import Button from "./Button"
+import UserLogin from "./UserLogin"
+import UserPage from "./UserPage"
 
 const User = (props) => {
-
-    const nameRef = useRef('')
-
-    const startHandler = (event) => {
-        event.preventDefault()
-        if(nameRef !== '') {
-            fetch('https://matma-backend.herokuapp.com/users/create/', {
-            method: 'post',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "name": nameRef.current.value })}).then((res) => {
-                console.log(res);
-            })
-        }
+    const [userLogged, setUserLogged] = useState(false)
+    const [reference, setReference] = useState("")
+    const [username, setUsername] = useState("")
+    const login = (name) => {
+//CREATE USER
+        if(name !== '') {
+            fetch('http://localhost:8000/users/create/', {
+                method: 'post',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name })}).then((res) => {
+                    if(!res.ok) {
+                        throw new Error()
+                    }
+                    setUsername(name)
+                    setUserLogged(true)
+                })
+            }
+//LISTEN FOR GAME START BY ADMIN
+        
+            
+            
       }
 
     return (
     <div>
-        <h1>Wpisz nazwę</h1>
-        <input ref={nameRef}/>
-        <Button onClick={startHandler}>START</Button>
-        <Button action={props.changeUser}>admin</Button>
+        {!userLogged && <UserLogin login={login} changeUser={props.changeUser}></UserLogin>}
+        {userLogged && <UserPage name={username}></UserPage>}
     </div>
 
     )
