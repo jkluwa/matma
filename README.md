@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+ # 🧮⚔️ Math Arena - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The user-facing React application for the real-time 1v1 math duel platform. It provides a dynamic interface for both the game Administrator and the competing Players, powered by real-time WebSocket communication.
 
-In the project directory, you can run:
 
-### `npm start`
+## 🎭 Role-Based Interfaces
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 👑 Admin Dashboard
 
-### `npm test`
+* Secure login interface.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Real-time monitoring of active users in the lobby via WebSockets.
 
-### `npm run build`
+* A central command button to trigger dynamic 1v1 matchmaking and distribute tasks.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 👤 Player Arena
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Seamless entry (nickname only).
 
-### `npm run eject`
+* Real-time waiting room (Lobby).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Game screen displaying the assigned math task once the Admin starts the duel.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🛠 Tech Stack
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **UI Framework:** React.js
 
-## Learn More
+* **Real-time Communication:** Native WebSockets
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Quick Start
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Install Dependencies
 
-### Analyzing the Bundle Size
+```bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm install
 
-### Making a Progressive Web App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### 2. Run the Development Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
 
-### Deployment
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `npm run build` fails to minify
+*Note: This is a legacy React project.* The project uses cross-env to ensure compatibility across different operating systems (Windows/Linux/macOS) when handling legacy OpenSSL providers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 🗺️ Known Limitations
+
+- Implement the UI for submitting math task answers.
+
+- Implement the UI for players leaderboard.
+
+- Implement the UI for real time info about players' results.
+
+- Add a Global Error Boundary to gracefully handle WebSocket disconnects. 
