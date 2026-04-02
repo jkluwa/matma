@@ -30,27 +30,29 @@ The user-facing React application for the real-time 1v1 math duel platform. It p
 * **UI Framework:** React.js
 
 * **Real-time Communication:** Native WebSockets
-
-
 ## 🚀 Quick Start
 
-
-### 1. Install Dependencies
-
-```bash
-
-npm install
-
-```
-
-
-### 2. Run the Development Server
+The easiest way to run the entire stack (Database, Backend, and Frontend) is using Docker Compose from the backend directory:
 
 ```bash
-
-npm start
-
+docker-compose up --build
 ```
+The frontend will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+### 💻 Manual Development Setup
+
+If you prefer to run the frontend outside of Docker:
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Run Dev Server:**
+   ```bash
+   npm start
+   ```
 
 *Note: This is a legacy React project.* The project uses cross-env to ensure compatibility across different operating systems (Windows/Linux/macOS) when handling legacy OpenSSL providers
 
